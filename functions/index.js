@@ -57,13 +57,21 @@ app.get('/users/:userId', function (req, res) {
 
 /**
  * Simple function that mocks register response using preloaded mock data. See [mockUser] above.
- * Here is an example request with data:
  *
+ * Here is an example request with data:
  * ```
  * curl -X POST \
  *   http://localhost:5001/mock-apis-server/us-central1/api/register \
  *   -H 'Content-Type: application/json' \
  *   -d '{"userId": "myusername", "email":"my@email.com", "name": "New User"}'
+ * ```
+ *
+ * Another example where request can fail if username already exists:
+ * ```
+ * curl -X POST \
+ *   http://localhost:5001/mock-apis-server/us-central1/api/register \
+ *   -H 'Content-Type: application/json' \
+ *   -d '{"userId": "taken", "email":"existing@email.com", "name": "Existing User"}'
  * ```
  */
 app.post('/register', function(req, res) {
