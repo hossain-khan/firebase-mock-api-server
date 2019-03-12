@@ -23,7 +23,7 @@ const mockUser = require('./mock-responses/user');
  * Say hello as response
  * ----------------------------------------
  */
-app.get('/say/hello', function(req, res) {
+app.get('/say/hello', (req, res) => {
    console.log('Request Query Params: ', req.query);
 
   // Success for any other query
@@ -38,7 +38,7 @@ app.get('/say/hello', function(req, res) {
  * Captures dynamic params from URL (See https://expressjs.com/en/guide/routing.html)
  * ----------------------------------------
  */
-app.get('/users/:userId', function (req, res) {
+app.get('/users/:userId', (req, res) => {
   console.log('Request Query Params: ', req.query);
   console.log('Request URL Params: ', req.params);
 
@@ -74,11 +74,11 @@ app.get('/users/:userId', function (req, res) {
  *   -d '{"userId": "taken", "email":"existing@email.com", "name": "Existing User"}'
  * ```
  */
-app.post('/register', function(req, res) {
+app.post('/register', (req, res) => {
   console.log('Request Body Params: ', req.body);
 
    // Simulates username taken, if username is `taken`
-   if(req.body.hasOwnProperty('userId') && req.body.userId == "taken") { //
+   if(req.body.hasOwnProperty('userId') && req.body.userId === "taken") { //
      return res.status(400)
             .json(mockUser.registerFailedUsernameExists);
    }
