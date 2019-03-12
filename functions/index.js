@@ -13,6 +13,12 @@ app.use(cors);
 // [END middleware]
 
 
+//
+// Loads mock data in local variable for easy access
+// -----------------------------------------------------
+const mockUser = require('./mock-responses/user');
+
+
 /**
  * Say hello as response
  * ----------------------------------------
@@ -47,6 +53,36 @@ app.get('/users/:userId', function (req, res) {
                     "email": faker.internet.email()})
 });
 /* [END `/users/:userId` ] */
+
+
+/**
+ * Simple function that mocks register response using preloaded mock data. See [mockUser] above.
+ * Here is an example request with data:
+ *
+ * ```
+ * curl -X POST \
+ *   http://localhost:5001/mock-apis-server/us-central1/api/register \
+ *   -H 'Content-Type: application/json' \
+ *   -d '{"userId": "myusername", "email":"my@email.com", "name": "New User"}'
+ * ```
+ */
+app.post('/register', function(req, res) {
+  console.log('Request Body Params: ', req.body);
+
+   // Simulates username taken, if username is `taken`
+   if(req.body.hasOwnProperty('userId') && req.body.userId == "taken") { //
+     return res.status(400)
+            .json(mockUser.registerFailedUsernameExists);
+   }
+
+  // Attach the request data to response
+  var response = mockUser.registerSuccess
+  response.requestData = req.body
+
+  // Success - falls though for any other request data
+  return res.status(200)
+            .json(response);
+});
 
 
 // [START export]

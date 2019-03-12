@@ -1,0 +1,8 @@
+{
+  "registerFailedUsernameExists": {
+    "message": "Username already exists."
+  },
+  "registerSuccess": {
+    "message": "Registration successful."
+  }
+}
