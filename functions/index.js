@@ -22,6 +22,7 @@ const mockUser = require('./mock-responses/user');
 /**
  * Say hello as response
  * ----------------------------------------
+ * Try (refresh for new values): https://mock-apis-server.firebaseapp.com/say/hello
  */
 app.get('/say/hello', (req, res) => {
    console.log('Request Query Params: ', req.query);
@@ -37,6 +38,7 @@ app.get('/say/hello', (req, res) => {
  * Provides user's information based on user ID
  * Captures dynamic params from URL (See https://expressjs.com/en/guide/routing.html)
  * ----------------------------------------
+ * Try: https://mock-apis-server.firebaseapp.com/users/myid
  */
 app.get('/users/:userId', (req, res) => {
   console.log('Request Query Params: ', req.query);
@@ -61,7 +63,7 @@ app.get('/users/:userId', (req, res) => {
  * Here is an example request with data:
  * ```
  * curl -X POST \
- *   http://localhost:5001/mock-apis-server/us-central1/api/register \
+ *   https://mock-apis-server.firebaseapp.com/register \
  *   -H 'Content-Type: application/json' \
  *   -d '{"userId": "myusername", "email":"my@email.com", "name": "New User"}'
  * ```
@@ -69,7 +71,7 @@ app.get('/users/:userId', (req, res) => {
  * Another example where request can fail if username already exists:
  * ```
  * curl -X POST \
- *   http://localhost:5001/mock-apis-server/us-central1/api/register \
+ *   https://mock-apis-server.firebaseapp.com/register \
  *   -H 'Content-Type: application/json' \
  *   -d '{"userId": "taken", "email":"existing@email.com", "name": "Existing User"}'
  * ```
