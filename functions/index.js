@@ -22,7 +22,7 @@ const mockUser = require('./mock-responses/user');
 /**
  * Say hello as response
  * ----------------------------------------
- * Try (refresh for new values): https://mock-apis-server.firebaseapp.com/say/hello
+ * Try: https://mock-apis-server.firebaseapp.com/say/hello
  */
 app.get('/say/hello', (req, res) => {
    console.log('Request Query Params: ', req.query);
@@ -38,7 +38,7 @@ app.get('/say/hello', (req, res) => {
  * Provides user's information based on user ID
  * Captures dynamic params from URL (See https://expressjs.com/en/guide/routing.html)
  * ----------------------------------------
- * Try: https://mock-apis-server.firebaseapp.com/users/myid
+ * Try (refresh for new fake values): https://mock-apis-server.firebaseapp.com/users/myid
  */
 app.get('/users/:userId', (req, res) => {
   console.log('Request Query Params: ', req.query);
@@ -93,6 +93,7 @@ app.post('/register', (req, res) => {
   return res.status(200)
             .json(response);
 });
+/* [END `/register` ] */
 
 
 // [START export]
