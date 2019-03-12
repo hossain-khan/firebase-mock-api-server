@@ -2,6 +2,7 @@
 
 // [START import]
 const functions = require('firebase-functions');
+const faker = require('faker'); // Generates meaningful fake data - https://www.npmjs.com/package/faker
 const express = require('express');
 const app = express();
 // [END import]
@@ -41,7 +42,9 @@ app.get('/users/:userId', function (req, res) {
   }
 
   return res.status(200)
-            .json({"userId": req.params.userId, "name": "Demo User"})
+            .json({"userId": req.params.userId,
+                    "name": faker.name.findName(),
+                    "email": faker.internet.email()})
 });
 /* [END `/users/:userId` ] */
 
