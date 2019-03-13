@@ -3,7 +3,7 @@
 // [START import]
 const functions = require('firebase-functions');
 const faker = require('faker'); // Generates meaningful fake data - https://www.npmjs.com/package/faker
-const express = require('express');
+const express = require('express'); // See https://expressjs.com/en/guide/routing.html for reference
 const app = express();
 // [END import]
 
@@ -19,14 +19,35 @@ app.use(cors);
 const mockUser = require('./mock-responses/user');
 const mockPhotos = require('./mock-responses/photos');
 
+//
+// Mocking Data
+// ----------------------------------------
+// The server is essentially an Express JS framework.
+// To mock data, we need to define 'routing' rules and mock responses.
+// See https://expressjs.com/en/guide/routing.html for conventions used and best practices.
+//  - Mock resource are saved in JSON file located at: `mock-responses/[resourceId].json`
+//
+// Here are some useful object available in each REQUEST ("req" variable), which can be used to provide dynamic response based on input value.
+//  * Query Data Object:  req.query
+//  * Post Data Object:   req.body
+//  * Path parameter:     req.params
+//  * Header Data Object: req.headers
+
 
 /**
  * Say hello as response
  * ----------------------------------------
  * Try: https://mock-apis-server.firebaseapp.com/say/hello
+ * or with name: https://mock-apis-server.firebaseapp.com/say/hello?name=Ryan
  */
 app.get('/say/hello', (req, res) => {
    console.log('Request Query Params: ', req.query);
+
+  // Response can be dynamic based on input
+  if(req.query.hasOwnProperty('name') && req.query.name !== "") {
+     return res.status(200)
+            .json({"message":"Hello " + req.query.name + "! Welcome to mock server."});
+  }
 
   // Success response
   return res.status(200)
