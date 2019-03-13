@@ -5,8 +5,8 @@ A simple mock API server using [Express.js](https://expressjs.com/) that is host
 You have full control of what API to define and what data to respond with with minimal coding.
 
 ## Show me examples
-The APIs are defined via Express and served though Firebase cloud functions. All the API can be found at [functions/index.js](https://github.com/amardeshbd/firebase-mock-api-server/blob/master/functions/index.js) 
-and pre-loaded mock responses example can be found at [mock-responses/user.json](https://github.com/amardeshbd/firebase-mock-api-server/blob/master/functions/mock-responses/user.json)
+The APIs are defined via Express and served though Firebase cloud functions. All the API can be found at 👉 **[functions/index.js](https://github.com/amardeshbd/firebase-mock-api-server/blob/master/functions/index.js)** 👈 
+and pre-loaded mock responses example can be found at [mock-responses](https://github.com/amardeshbd/firebase-mock-api-server/tree/master/functions/mock-responses)
 
 * References: https://expressjs.com/en/guide/routing.html
 
