@@ -17,6 +17,7 @@ app.use(cors);
 // Loads mock data in local variable for easy access
 // -----------------------------------------------------
 const mockUser = require('./mock-responses/user');
+const mockPhotos = require('./mock-responses/photos');
 
 
 /**
@@ -27,11 +28,37 @@ const mockUser = require('./mock-responses/user');
 app.get('/say/hello', (req, res) => {
    console.log('Request Query Params: ', req.query);
 
-  // Success for any other query
+  // Success response
   return res.status(200)
             .json({"message":"Hello there... Welcome to mock server."});
 });
 /* [END `/say/hello` ] */
+
+
+
+/**
+ * Simple request with pre-populated mock response from `mock-responses/photos.json`
+ * --------------------------------------------------------------------------------------
+ * Try: https://mock-apis-server.firebaseapp.com/photos
+ */
+app.get('/photos', (req, res) => {
+  return res.status(200).json(mockPhotos);
+});
+/* [END `/photos` ] */
+
+
+
+/**
+ * Re-uses `mock-responses/photos.json` data to respond with single image.
+ * --------------------------------------------------------------------------------------
+ * Try: https://mock-apis-server.firebaseapp.com/photos/2321
+ */
+app.get('/photos/:photoId', (req, res) => {
+  // Returns the first item from the list, you could return random item too
+  return res.status(200).json(mockPhotos.photos[0]);
+});
+/* [END `/photos/:photoId` ] */
+
 
 
 /**
@@ -55,6 +82,7 @@ app.get('/users/:userId', (req, res) => {
                     "email": faker.internet.email()})
 });
 /* [END `/users/:userId` ] */
+
 
 
 /**

@@ -8,10 +8,14 @@ You have full control of what API to define and what data to respond with with m
 The APIs are defined via Express and served though Firebase cloud functions. All the API can be found at [functions/index.js](https://github.com/amardeshbd/firebase-mock-api-server/blob/master/functions/index.js) 
 and pre-loaded mock responses example can be found at [mock-responses/user.json](https://github.com/amardeshbd/firebase-mock-api-server/blob/master/functions/mock-responses/user.json)
 
+* References: https://expressjs.com/en/guide/routing.html
+
 #### Simple GET
 https://mock-apis-server.firebaseapp.com/say/hello
+
 #### Capture data from URL
 https://mock-apis-server.firebaseapp.com/users/myid
+
 #### POST data to register new account
 Success
 ```
@@ -30,3 +34,9 @@ curl -X POST \
 ```
 
 > NOTE: You will have to use terminal to execute these curl commands.
+
+#### Large list of photos response from mocked JSON file
+https://mock-apis-server.firebaseapp.com/photos
+
+#### Single photo item from mocked JSON file
+https://mock-apis-server.firebaseapp.com/photos/29647
