@@ -5,7 +5,7 @@ A simple mock API server using [Express.js](https://expressjs.com/) that is host
 You have full control of what API to define and what data to respond with with minimal coding.
 
 ## Show me examples
-The APIs are defined via Express.js framework and served though Firebase cloud functions. All the defined API can be found at 👉 **[functions/index.js](https://github.com/amardeshbd/firebase-mock-api-server/blob/master/functions/index.js)** 👈 
+The APIs are defined via Express.js framework and served though Firebase cloud functions. All the defined API can be found at 👉 **[functions/index.js](https://github.com/amardeshbd/firebase-mock-api-server/blob/master/functions/index.js)** 👈
 and pre-loaded mock responses example can be found at [mock-responses](https://github.com/amardeshbd/firebase-mock-api-server/tree/master/functions/mock-responses)
 
 * References: https://expressjs.com/en/guide/routing.html
@@ -42,3 +42,11 @@ https://mock-apis-server.firebaseapp.com/photos
 
 #### Single photo item from mocked JSON file
 https://mock-apis-server.firebaseapp.com/photos/29647
+
+#### Use :fire: Firebase Firestore database
+Using firebase [console](https://console.firebase.google.com) you can easily update the database values
+to reflect new values in realtime without needing to touch JSON source files.
+
+* https://mock-apis-server.firebaseapp.com/userProfile/bob
+* https://mock-apis-server.firebaseapp.com/userProfile/alice
+* https://mock-apis-server.firebaseapp.com/userProfile/notfound

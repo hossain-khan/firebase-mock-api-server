@@ -2,10 +2,18 @@
 
 // [START import]
 const functions = require('firebase-functions');
+const admin = require('firebase-admin');
 const faker = require('faker'); // Generates meaningful fake data - https://www.npmjs.com/package/faker
 const express = require('express'); // See https://expressjs.com/en/guide/routing.html for reference
 const app = express();
 // [END import]
+
+// The Firebase Admin SDK to access the Firebase Realtime Database.
+admin.initializeApp();
+// Since this code will be running in the Cloud Functions environment
+// we call initialize Firestore without any arguments because it
+// detects authentication from the environment.
+const firestore = admin.firestore();
 
 // [START middleware]
 const cors = require('cors')({origin: true});
@@ -143,6 +151,31 @@ app.post('/register', (req, res) => {
             .json(response);
 });
 /* [END `/register` ] */
+
+
+
+/**
+ * Simple request that extracts data from firebase firestore (database)
+ * --------------------------------------------------------------------------------------
+ * Try: https://mock-apis-server.firebaseapp.com/userProfile/bob
+ */
+app.get('/userProfile/:userId', (req, res) => {
+  var docRef = firestore.collection("userProfiles").doc(req.params.userId);
+
+  // See https://firebase.google.com/docs/firestore/query-data/get-data#get_a_document
+  docRef.get().then(function(doc) {
+      if (doc.exists) {
+          return res.status(200).json(doc.data());
+      } else {
+          return res.status(400).json({"message":"User ID not found."});
+      }
+  }).catch(function(error) {
+      return res.status(400).json({"message":"Unable to connect to Firestore."});
+  });
+});
+/* [END `/userProfile` ] */
+
+
 
 
 // [START export]
