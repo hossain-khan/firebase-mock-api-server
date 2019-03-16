@@ -163,13 +163,13 @@ app.get('/userProfile/:userId', (req, res) => {
   var docRef = firestore.collection("userProfiles").doc(req.params.userId);
 
   // See https://firebase.google.com/docs/firestore/query-data/get-data#get_a_document
-  docRef.get().then(function(doc) {
+  docRef.get().then((doc) => {
       if (doc.exists) {
           return res.status(200).json(doc.data());
       } else {
           return res.status(400).json({"message":"User ID not found."});
       }
-  }).catch(function(error) {
+  }).catch((error) => {
       return res.status(400).json({"message":"Unable to connect to Firestore."});
   });
 });
