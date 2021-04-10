@@ -1,3 +1,10 @@
+----
+
+> ⚠️ Nodejs 8 is no longer supported by Firebase. To use Node 11 you have to add payment method. 
+> The concept described here should apply to Node 11 as well, minor modification may be required.
+
+----
+
 # firebase-mock-api-server
 A simple mock API server using [Express.js](https://expressjs.com/) that is hosted on [Firebase](https://firebase.google.com/).
 
